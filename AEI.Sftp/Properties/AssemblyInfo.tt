@@ -1,0 +1,166 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ output extension=".cs" #>
+<#
+	/**********************************************************************************************/
+	/******************** Edit this info when you add this file to your project *******************/
+	/**********************************************************************************************/
+	var assemblyTitle = Path.GetFileName(Directory.GetParent(Host.ResolvePath("")).FullName);
+	var assemblyDescription = "Secure File Transfer Protocol Component";
+	var assemblyCompany = "Ashley Furniture Industries, Inc.";
+	var assemblyProduct = "Ashley Retail Payment Gateway";
+	var assemblyCopyright = "Copyright © 2017 Ashley Furniture Industries, Inc.";
+	var guid = "755BF094-43AC-422C-BC37-BDF023CD4E0F";
+	/**********************************************************************************************/
+	/**********************************************************************************************/
+	/**********************************************************************************************/
+
+	// Git EXE path.
+    var gitExePath = System.IO.Path.Combine(
+		Environment.GetEnvironmentVariable("PATH").Split(';')
+		.FirstOrDefault(p => p.ToLower()
+		.Contains("git") && System.IO.File.Exists(System.IO.Path.Combine(p, "git.exe"))) ?? string.Empty
+		, "git.exe");
+
+	// External Process.
+    var processStartInfo = new ProcessStartInfo(gitExePath)
+    {
+        CreateNoWindow = true,
+		RedirectStandardError =  true,
+		RedirectStandardInput = true,
+		RedirectStandardOutput = true,
+		UseShellExecute = false,
+		WindowStyle = ProcessWindowStyle.Hidden,
+		WorkingDirectory = Host.ResolvePath(""),
+    };
+	var errorOutput = string.Empty;
+	var output = string.Empty;
+    Func<string, string> getGitOutput = (string gitArguments) =>
+    {
+        processStartInfo.Arguments = gitArguments;
+        var p = Process.Start(processStartInfo);
+        p.WaitForExit();
+		errorOutput += p.StandardError.ReadToEnd().TrimEnd() + Environment.NewLine;
+		var processOutput = p.StandardOutput.ReadToEnd().TrimEnd();
+		output += processOutput + Environment.NewLine;
+		return processOutput;
+    };
+
+	// Version
+	string tagDescription;
+	try
+	{
+		tagDescription = getGitOutput("describe --tags --dirty --match \"release*\"");
+	}
+	catch (Exception ex)
+	{
+		throw new Exception("Error executing git.exe. Make sure that git is installed and is in the PATH", ex);
+	}
+    const string pattern = @"(?<majorVersion>\d+)\.(?<minorVersion>\d+)(\.(?<initialPatch>\d+))?(-(?<commitCount>\d+)-(?<commitHash>\w+))?(?<isDirty>-dirty)?";
+    var match = System.Text.RegularExpressions.Regex.Match(tagDescription, pattern);
+    var majorVersion = match.Groups["majorVersion"].Value;
+    if (majorVersion == string.Empty) majorVersion = "1";
+    var minorVersion = match.Groups["minorVersion"].Value;
+    if (minorVersion == string.Empty) minorVersion = "0";
+	// NOTE: After P2 HDE 7/1/2015, git tags should simply be 
+	// v{major}.{minor}, thus leaving initial patch number to be 0.
+    var initialPatchString = match.Groups["initialPatch"].Value;
+    if (initialPatchString == string.Empty) initialPatchString = "0";
+	int initialPatch; if (!int.TryParse(initialPatchString, out initialPatch)) initialPatch = 0;
+    var commitCount = match.Groups["commitCount"].Value;
+    if (commitCount == string.Empty) commitCount = "0";
+    var isDirty = match.Groups["isDirty"].Value != string.Empty;
+    if (isDirty) commitCount = (int.Parse(commitCount) + 1).ToString();
+	// NOTE: After P2 HDE 7/1/2015, patch = commit count.
+	int patch; if (!int.TryParse(commitCount, out patch)) patch = 0;
+	// To support version scheme prior to P2 HDE 7/1/2015,
+	// we increment the patch with the initial patch number.
+	patch += initialPatch;
+	var buildNumberString = System.Environment.GetEnvironmentVariable("BUILD_NUMBER") ?? "0";
+	int buildNumber;
+	if (!int.TryParse(buildNumberString, out buildNumber)) buildNumber = 0;
+    var version = new Version(
+		int.Parse(majorVersion), int.Parse(minorVersion), 
+		patch, buildNumber);
+
+	// Branch
+    var branch = getGitOutput("rev-parse --abbrev-ref HEAD");
+    var isMasterOrReleaseBranch = 
+		string.Equals("master", branch, StringComparison.InvariantCultureIgnoreCase) 
+		|| 
+		string.Equals("Release", branch, StringComparison.InvariantCultureIgnoreCase) 
+		|| 
+		branch.StartsWith("Release-", StringComparison.InvariantCultureIgnoreCase)
+		|| 
+		branch.StartsWith("Release/", StringComparison.InvariantCultureIgnoreCase);
+
+	// Product Version.
+	var product = getGitOutput("describe --match \"product*\"");
+	const string prodPattern = @"product-(?<productName>\w+)-.*";
+	match = System.Text.RegularExpressions.Regex.Match(product, prodPattern);
+	var productName = match.Groups["productName"].Value;
+
+	// Product Version.
+	var productVersion = version.ToString(3) + "-" + productName + (buildNumber == 0 ? string.Empty : ("-" + buildNumber.ToString("00000")));
+#>
+using System.Reflection;
+using System.Runtime.InteropServices;
+
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle("<#= assemblyTitle #>")]
+[assembly: AssemblyDescription("<#= assemblyDescription #>")]
+[assembly: AssemblyCompany("<#= assemblyCompany #>")]
+[assembly: AssemblyProduct("<#= assemblyProduct #>")]
+[assembly: AssemblyCopyright("<#= assemblyCopyright #>")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+
+#if DEBUG
+[assembly: AssemblyConfiguration("DEBUG")]
+#else
+[assembly: AssemblyConfiguration("RELEASE")]
+#endif
+
+// Setting ComVisible to false makes the types in this assembly not visible 
+// to COM components.  If you need to access a type in this assembly from 
+// COM, set the ComVisible attribute to true on that type.
+/* Error: <#= errorOutput #>
+Branch: <#= branch #>
+Major: <#= majorVersion #>
+Minor: <#= minorVersion #>
+Patch: <#= patch #>
+Build Number: <#= buildNumber #>
+Initial Patch: <#= initialPatchString #>
+Commit Count: <#= commitCount #>
+Is Dirty?: <#= isDirty #>
+Version: <#= version #>
+Is Release Branch?: <#= isMasterOrReleaseBranch #>
+Product Version: <#= productVersion #>
+Output: <#= output #>
+Host Path: <#= Host.ResolvePath("") #>
+
+
+
+*/
+[assembly: ComVisible(false)]
+
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("<#= guid #>")]
+
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+[assembly: AssemblyVersion("<#= version #>")]
+[assembly: AssemblyFileVersion("<#= version #>")]
+[assembly: AssemblyInformationalVersion("<#= productVersion #>")]

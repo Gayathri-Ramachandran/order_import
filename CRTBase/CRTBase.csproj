@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D9DF2431-6D32-4AB1-A9F6-379C04B221A0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CRTBase</RootNamespace>
+    <AssemblyName>CRTBase</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AddressValidation">
+      <HintPath>..\ThirdPartyLib\AddressValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="AFM.Commerce.Entities">
+      <HintPath>..\ThirdPartyLib\AFM.Commerce.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="AFM.Commerce.ExternalServices">
+      <HintPath>..\ThirdPartyLib\AFM.Commerce.ExternalServices.dll</HintPath>
+    </Reference>
+    <Reference Include="AFM.Commerce.Framework.Core">
+      <HintPath>..\ThirdPartyLib\AFM.Commerce.Framework.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="AFM.Commerce.Framework.Extensions">
+      <HintPath>..\ThirdPartyLib\AFM.Commerce.Framework.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="AFM.Commerce.Logging">
+      <HintPath>..\ThirdPartyLib\AFM.Commerce.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="AFM.Commerce.Runtime.Services">
+      <HintPath>..\ThirdPartyLib\AFM.Commerce.Runtime.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="AFM.Commerce.Services">
+      <HintPath>..\ThirdPartyLib\AFM.Commerce.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="AFM.Ecommerce.Controls">
+      <HintPath>..\ThirdPartyLib\AFM.Ecommerce.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Agr.Int.OrderImport.Framework">
+      <HintPath>..\ThirdPartyLib\Agr.Int.OrderImport.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="KountRisSdk">
+      <HintPath>..\ThirdPartyLib\KountRisSdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Cache.DictionaryCache">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Cache.DictionaryCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Client">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.ConfigurationProviders">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.ConfigurationProviders.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Data">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataAccess.Sqlite">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataAccess.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataManagers">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataManagers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataServices">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Entities">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Framework">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Messages">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Services">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Services.Desktop">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Services.Messages">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Services.PricingEngine">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.PricingEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.TransactionService">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.TransactionService.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Workflow">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Workflow.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.Activities">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.Activities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.Diagnostics">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.Ecommerce.Sdk.Controls">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.Ecommerce.Sdk.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.Ecommerce.Sdk.Core">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.Ecommerce.Sdk.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.Ecommerce.Sdk.Services">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.Ecommerce.Sdk.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.Notification.Contracts">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.Notification.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.PaymentManager.Reference">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentManager.Reference.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.PaymentProcessor.Common">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentProcessor.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.PaymentSDK">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.PaymentSDK.Extensions.Desktop">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentSDK.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.PaymentSDK.Portable">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentSDK.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.PaymentTerminal.Contracts">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.PaymentTerminal.L5300">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentTerminal.L5300.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.SDKManager">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.SDKManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.SDKManager.Portable">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.SDKManager.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.Security">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\ThirdPartyLib\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\ThirdPartyLib\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\ThirdPartyLib\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomerHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Agr.Int.OrderImport.Data.Models\Agr.Int.OrderImport.Data.Models.csproj">
+      <Project>{41f2b1eb-e90f-41e3-907b-7e06eea3bdb8}</Project>
+      <Name>Agr.Int.OrderImport.Data.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

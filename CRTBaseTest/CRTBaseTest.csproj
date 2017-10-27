@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1346514C-DAAD-4259-AE74-C2EEA45A75D2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CRTBase</RootNamespace>
+    <AssemblyName>CRTBase</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime, Version=6.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Cache.DictionaryCache, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Cache.DictionaryCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Client, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.ConfigurationProviders, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.ConfigurationProviders.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Data, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataAccess.Sqlite">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataAccess.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataManagers, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataManagers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataServices, Version=6.3.0.0, Culture=neutral, PublicKeyToken=95f5719c14843639, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer, Version=6.3.0.0, Culture=neutral, PublicKeyToken=95f5719c14843639, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Entities, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Framework, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Messages, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Services, Version=6.3.0.0, Culture=neutral, PublicKeyToken=95f5719c14843639, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Services.Desktop, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Services.Messages, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Services.PricingEngine, Version=6.3.0.0, Culture=neutral, PublicKeyToken=95f5719c14843639, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.PricingEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.TransactionService, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.TransactionService.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Workflow, Version=6.3.0.0, Culture=neutral, PublicKeyToken=95f5719c14843639, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Workflow.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.Activities">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.Activities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.Ecommerce.Sdk.Controls">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.Ecommerce.Sdk.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.Ecommerce.Sdk.Core, Version=6.3.0.0, Culture=neutral, PublicKeyToken=95f5719c14843639, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.Ecommerce.Sdk.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.Ecommerce.Sdk.Services">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.Ecommerce.Sdk.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.Notification.Contracts, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.Notification.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.PaymentManager.Reference">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentManager.Reference.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.PaymentProcessor.Common">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentProcessor.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.PaymentSDK, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.PaymentSDK.Extensions.Desktop">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentSDK.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.PaymentSDK.Portable, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentSDK.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.PaymentTerminal.Contracts">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.PaymentTerminal.L5300">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentTerminal.L5300.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.SDKManager">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.SDKManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.SDKManager.Portable">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.SDKManager.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Retail.Security">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Retail.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\ThirdPartyLib\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Composition.AttributedModel, Version=1.0.30.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\System.Composition.AttributedModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.Convention, Version=1.0.30.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\System.Composition.Convention.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.Hosting, Version=1.0.30.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\System.Composition.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.Runtime, Version=1.0.30.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\System.Composition.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.TypedParts, Version=1.0.30.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\System.Composition.TypedParts.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomerHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Agr.Int.OrderImport.Data.Models\Agr.Int.OrderImport.Data.Models.csproj">
+      <Project>{41f2b1eb-e90f-41e3-907b-7e06eea3bdb8}</Project>
+      <Name>Agr.Int.OrderImport.Data.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

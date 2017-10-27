@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{44F39E3C-B3CD-409C-85AB-B9E40D5FEA2C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Agr.Int.OrderImport</RootNamespace>
+    <AssemblyName>Agr.Int.OrderImport</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AFM.Commerce.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=95f5719c14843639, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\AFM.Commerce.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Heliar.Composition.Core, Version=2.0.17070.259, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Heliar.Composition.Core.2.0.17070\lib\net452\Heliar.Composition.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Cache.DictionaryCache">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Cache.DictionaryCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Data, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataAccess.Sqlite">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataAccess.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataManagers, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataManagers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataServices">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.Commerce.Runtime.Services.Desktop">
+      <HintPath>..\ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\ThirdPartyLib\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\ThirdPartyLib\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Composition.Registration" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Reflection.Context" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DependencyConfig.cs" />
+    <Compile Include="HostDependencyRegistrar.cs" />
+    <Compile Include="ImportOrder.cs" />
+    <Compile Include="OrderImportRunner.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssemblyInfo.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="rtsBindings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="commerceRuntime.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\AssemblyInfo.t4" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Agr.Int.OrderImport.Common\Agr.Int.OrderImport.Common.csproj">
+      <Project>{66fcb509-cd5f-48e9-b64c-636a62cb6a99}</Project>
+      <Name>Agr.Int.OrderImport.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agr.Int.Orderimport.Data.Access\Agr.Int.Orderimport.Data.Access.csproj">
+      <Project>{a2547cdd-ca06-4d9b-859c-5800e53f2398}</Project>
+      <Name>Agr.Int.Orderimport.Data.Access</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agr.Int.OrderImport.Data.Models\Agr.Int.OrderImport.Data.Models.csproj">
+      <Project>{41f2b1eb-e90f-41e3-907b-7e06eea3bdb8}</Project>
+      <Name>Agr.Int.OrderImport.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agr.Int.OrderImport.Framework\Agr.Int.OrderImport.Framework.csproj">
+      <Project>{5066db7c-b591-46b6-b4dc-ccd839308a8d}</Project>
+      <Name>Agr.Int.OrderImport.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CRTBase\CRTBase.csproj">
+      <Project>{d9df2431-6d32-4ab1-a9f6-379c04b221a0}</Project>
+      <Name>CRTBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\AssemblyInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <!-- Initial default value -->
+    <_TransformExe>$(CommonProgramFiles)\Microsoft Shared\TextTemplating\14.0\TextTransform.exe</_TransformExe>
+    <!-- Fallback to older T4 versions-->
+    <_TransformExe Condition="!Exists('$(_TransformExe)')">$(CommonProgramFiles)\Microsoft Shared\TextTemplating\12.0\TextTransform.exe</_TransformExe>
+    <_TransformExe Condition="!Exists('$(_TransformExe)')">$(CommonProgramFiles)\Microsoft Shared\TextTemplating\10.0\TextTransform.exe</_TransformExe>
+  </PropertyGroup>
+  <!-- <Target Name="TransformOnBuild"> -->
+  <Target Name="TransformOnBuild" AfterTargets="BeforeBuild">
+    <Error Text="Failed to find TextTransform.exe tool at '$(_TransformExe)'." Condition="!Exists('$(_TransformExe)')" />
+    <ItemGroup>
+      <_TextTransform Include="$(ProjectDir)Properties\AssemblyInfo.tt" />
+    </ItemGroup>
+    <!-- Perform task batching for each file -->
+    <Exec Command="&quot;$(_TransformExe)&quot; &quot;@(_TextTransform)&quot;" Condition="'%(Identity)' != ''" />
+  </Target>
+  <PropertyGroup>
+    <TransformOnBuild>true</TransformOnBuild>
+    <TransformOutOfDateOnly>false</TransformOutOfDateOnly>
+  </PropertyGroup>
+</Project>

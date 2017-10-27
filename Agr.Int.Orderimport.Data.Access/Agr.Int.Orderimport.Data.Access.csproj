@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A2547CDD-CA06-4D9B-859C-5800E53F2398}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Agr.Int.Orderimport.Data.Access</RootNamespace>
+    <AssemblyName>Agr.Int.Orderimport.Data.Access</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AFM.Commerce.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=95f5719c14843639, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyLib\AFM.Commerce.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Heliar.Composition.Core, Version=2.0.17070.259, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Heliar.Composition.Core.2.0.17070\lib\net452\Heliar.Composition.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Composition.Registration" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Reflection.Context" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants\DeliveryMode.cs" />
+    <Compile Include="Constants\Query.cs" />
+    <Compile Include="Constants\Resources.cs" />
+    <Compile Include="Constants\TableTypes.cs" />
+    <Compile Include="Constants\XMLAttributeType.cs" />
+    <Compile Include="DataAccessDependencyRegistrar.cs" />
+    <Compile Include="OrderRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssemblyInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceLoader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\AssemblyInfo.t4" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Agr.Int.OrderImport.Common\Agr.Int.OrderImport.Common.csproj">
+      <Project>{66fcb509-cd5f-48e9-b64c-636a62cb6a99}</Project>
+      <Name>Agr.Int.OrderImport.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agr.Int.OrderImport.Data.Models\Agr.Int.OrderImport.Data.Models.csproj">
+      <Project>{41f2b1eb-e90f-41e3-907b-7e06eea3bdb8}</Project>
+      <Name>Agr.Int.OrderImport.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agr.Int.OrderImport.Framework\Agr.Int.OrderImport.Framework.csproj">
+      <Project>{5066db7c-b591-46b6-b4dc-ccd839308a8d}</Project>
+      <Name>Agr.Int.OrderImport.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CRTBase\CRTBase.csproj">
+      <Project>{d9df2431-6d32-4ab1-a9f6-379c04b221a0}</Project>
+      <Name>CRTBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\AssemblyInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
+    </Content>
+    <Content Include="SQL\OneTimeScript\TableTypes.sql" />
+    <Content Include="SQL\WriteOrder.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <!-- Initial default value -->
+    <_TransformExe>$(CommonProgramFiles)\Microsoft Shared\TextTemplating\14.0\TextTransform.exe</_TransformExe>
+    <!-- Fallback to older T4 versions-->
+    <_TransformExe Condition="!Exists('$(_TransformExe)')">$(CommonProgramFiles)\Microsoft Shared\TextTemplating\12.0\TextTransform.exe</_TransformExe>
+    <_TransformExe Condition="!Exists('$(_TransformExe)')">$(CommonProgramFiles)\Microsoft Shared\TextTemplating\10.0\TextTransform.exe</_TransformExe>
+  </PropertyGroup>
+  <!-- <Target Name="TransformOnBuild"> -->
+  <Target Name="TransformOnBuild" AfterTargets="BeforeBuild">
+    <Error Text="Failed to find TextTransform.exe tool at '$(_TransformExe)'." Condition="!Exists('$(_TransformExe)')" />
+    <ItemGroup>
+      <_TextTransform Include="$(ProjectDir)Properties\AssemblyInfo.tt" />
+    </ItemGroup>
+    <!-- Perform task batching for each file -->
+    <Exec Command="&quot;$(_TransformExe)&quot; &quot;@(_TextTransform)&quot;" Condition="'%(Identity)' != ''" />
+  </Target>
+  <PropertyGroup>
+    <TransformOnBuild>true</TransformOnBuild>
+    <TransformOutOfDateOnly>false</TransformOutOfDateOnly>
+  </PropertyGroup>
+</Project>

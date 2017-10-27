@@ -1,0 +1,159 @@
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Xml.Linq" #>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#+
+	// Configure this product/solution's information --------------------------
+	const string ASSEMBLY_PRODUCT = "Ashley Global Retail Order import";
+	const string ASSEMBLY_COMPANY = "Ashley Furniture Industries, Inc.";
+	const string ASSEMBLY_TRADEMARK = null;
+	// ------------------------------------------------------------------------
+
+	// Regex
+	const string VERSION_PATTERN = @"(?<majorVersion>\d+)\.(?<minorVersion>\d+)(\.(?<initialPatch>\d+))?(-(?<commitCount>\d+)-(?<commitHash>\w+))?(?<isDirty>-dirty)?";
+
+	const string NO_GIT_ERROR_MESSAGE = "Error executing git.exe. Make sure that git is installed and is the PATH";
+
+	// Git Arguments
+	const string GIT_TAGS_ARGUMENTS = "describe --tags --dirty --match \"release*\"";
+	const string GIT_BRANCH_ARGUMENTS = "rev-parse --abbrev-ref HEAD";
+	
+	public class AssemblyInfoGatherer
+	{
+		public string AssemblyProduct = ASSEMBLY_PRODUCT;
+		public string AssemblyCompany = ASSEMBLY_COMPANY;
+		public string AssemblyTrademark = ASSEMBLY_TRADEMARK;
+		public string AssemblyTitle = string.Empty;
+
+		public string GetCopyright() => $"Copyright \u00A9 {DateTime.Now.Date.Year} {AssemblyCompany}";
+
+		public AssemblyInfoGatherer(ITextTemplatingEngineHost Host)
+		{
+			string projectDirectoryPath = Directory.GetParent(Path.GetDirectoryName(Host.TemplateFile)).ToString();
+			string projectName = Path.GetFileName(projectDirectoryPath);
+			string projectFilePath = $"{projectDirectoryPath}\\{projectName}.csproj";
+			XDocument doc;
+			using (var fileStream = File.OpenRead(projectFilePath))
+			{
+				doc = XDocument.Load(fileStream);
+			}
+
+			AssemblyTitle = doc.Descendants().Where(n => n.Name.LocalName == "AssemblyName").First().Value;
+		}
+	}
+
+	public class GitInfoGatherer
+	{
+		public string Branch = string.Empty,
+					  Build = string.Empty,
+					  CommitCount = string.Empty,
+					  ErrorOutput = string.Empty,
+					  InitialPatch = string.Empty,
+					  MajorVersion = string.Empty,
+					  MinorVersion = string.Empty,
+					  Output = string.Empty,
+					  ProductVersion = string.Empty;
+		public Version AssemblyVersion;
+
+		public int BuildNumber = 0,
+				   InitialPatchNumber = 0,
+				   Patch = 0;
+		public bool IsDirty = false,
+					IsMasterOrReleaseBranch = false;
+		private string tagDescription, product;
+		private ITextTemplatingEngineHost host;
+
+		public GitInfoGatherer(ITextTemplatingEngineHost host)
+		{
+			this.host = host;
+
+			try
+			{
+				this.tagDescription = this.GetGitOutput(GIT_TAGS_ARGUMENTS);
+				this.Branch = this.GetGitOutput(GIT_BRANCH_ARGUMENTS);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(NO_GIT_ERROR_MESSAGE, ex);
+			}
+
+			this.CalculateVersion();
+			this.CalculateProductVersion();
+		}
+
+		private void CalculateVersion()
+		{
+			var match = Regex.Match(this.tagDescription, VERSION_PATTERN);
+			this.MajorVersion = match.Groups["majorVersion"].Value;
+			if (String.IsNullOrEmpty(this.MajorVersion)) MajorVersion = "1";
+			this.MinorVersion = match.Groups["minorVersion"].Value;
+			if (String.IsNullOrEmpty(this.MinorVersion)) this.MinorVersion = "0";
+
+			InitialPatch = match.Groups["initialPatch"].Value;
+			if (String.IsNullOrEmpty(InitialPatch)) this.InitialPatch = "0";
+			int.TryParse(this.InitialPatch, out this.InitialPatchNumber);
+			this.CommitCount = match.Groups["commitCount"].Value;
+			if (String.IsNullOrEmpty(this.CommitCount)) this.CommitCount = "0";
+			this.IsDirty = match.Groups["isDirty"].Value != string.Empty;
+			if (this.IsDirty) this.CommitCount = (int.Parse(this.CommitCount) + 1).ToString();
+			int.TryParse(this.CommitCount, out this.Patch);
+			this.Patch += this.InitialPatchNumber;
+
+			this.Build = System.Environment.GetEnvironmentVariable("BUILD_NUMBER") ?? "0";
+			int.TryParse(this.Build, out this.BuildNumber);
+			
+			this.AssemblyVersion = new Version(
+				int.Parse(this.MajorVersion), int.Parse(this.MinorVersion), 
+				this.Patch, this.BuildNumber);
+		}
+
+		private void CalculateBranch()
+		{
+			this.IsMasterOrReleaseBranch = string.Equals("master", this.Branch, StringComparison.InvariantCultureIgnoreCase) || 
+										   string.Equals("release", this.Branch, StringComparison.InvariantCultureIgnoreCase) || 
+										   this.Branch.StartsWith("release-", StringComparison.InvariantCultureIgnoreCase) || 
+										   this.Branch.StartsWith("release/", StringComparison.InvariantCultureIgnoreCase);
+		}
+
+		private void CalculateProductVersion()
+		{
+			ProductVersion = this.AssemblyVersion.ToString(3) + (this.BuildNumber == 0 ? string.Empty : ("-" + this.BuildNumber.ToString("00000")));
+		}
+
+		private string GetGitOutput(string gitArguments)
+		{
+			var gitExePath = Path.Combine(
+								Environment.GetEnvironmentVariable("PATH").Split(';')
+									.FirstOrDefault(p => p.ToLower()
+										.Contains("git") && File.Exists(Path.Combine(p, "git.exe"))) ?? string.Empty
+										, "git.exe");
+
+			var processStartInfo = new ProcessStartInfo(gitExePath)
+			{
+				Arguments = gitArguments,
+				CreateNoWindow = true,
+				RedirectStandardError =  true,
+				RedirectStandardInput = true,
+				RedirectStandardOutput = true,
+				UseShellExecute = false,
+				WindowStyle = ProcessWindowStyle.Hidden,
+				WorkingDirectory = this.host.ResolvePath("")
+			};
+
+			var process = Process.Start(processStartInfo);
+			process.WaitForExit();
+			this.ErrorOutput += process.StandardError.ReadToEnd().TrimEnd() + Environment.NewLine;
+			var processOutput = process.StandardOutput.ReadToEnd().TrimEnd();
+			this.Output += processOutput + Environment.NewLine;
+			return processOutput;
+		}
+	}
+#>

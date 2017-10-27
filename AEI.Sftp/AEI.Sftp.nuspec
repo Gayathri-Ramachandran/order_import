@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>AEI.Sftp</id>
+    <version>1.0.0</version>
+    <title>Secure File Transfer Protocol Component</title>
+    <authors>Pablo Vivera</authors>
+    <owners>Ashley Furniture</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Secure File Transfer Protocol Component</description>
+    <copyright>Copyright 2017</copyright>
+    <tags>sftp ssh ftp</tags>
+
+    <dependencies>
+      <dependency id="Common.Logging.NLog41" version="[3.4.0]" />
+      <dependency id="SSH.NET" version="[2016.0.0]" />
+    </dependencies>
+  </metadata>
+
+  <files>
+    <file src="bin\Release\AEI.Sftp.dll" target="lib\net461\AEI.Sftp.dll" />
+  </files>
+</package>

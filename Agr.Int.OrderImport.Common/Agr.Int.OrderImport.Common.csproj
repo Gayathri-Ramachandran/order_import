@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{66FCB509-CD5F-48E9-B64C-636A62CB6A99}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Agr.Int.OrderImport.Common</RootNamespace>
+    <AssemblyName>Agr.Int.OrderImport.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.4.1\lib\net40\Common.Logging.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Heliar.Composition.Core, Version=2.0.17070.259, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Heliar.Composition.Core.2.0.17070\lib\net452\Heliar.Composition.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Composition.Registration" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Reflection.Context" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstractions\IResourceLoader.cs" />
+    <Compile Include="Abstractions\Repositories\IOrderRepository.cs" />
+    <Compile Include="Abstractions\Services\ImportService.cs" />
+    <Compile Include="Abstractions\Services\IOrderWriteService.cs" />
+    <Compile Include="Configurations\SftpLocationConfigurationSection.cs" />
+    <Compile Include="Data\AsyncDbRepository.cs" />
+    <Compile Include="Data\IDbConnectionFactory.cs" />
+    <Compile Include="Data\Sql\SqlConnectionFactory.cs" />
+    <Compile Include="Model\IAppSettings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssemblyInfo.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AssemblyInfo.t4" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Agr.Int.OrderImport.Data.Models\Agr.Int.OrderImport.Data.Models.csproj">
+      <Project>{41F2B1EB-E90F-41E3-907B-7E06EEA3BDB8}</Project>
+      <Name>Agr.Int.OrderImport.Data.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\AssemblyInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <!-- Initial default value -->
+    <_TransformExe>$(CommonProgramFiles)\Microsoft Shared\TextTemplating\14.0\TextTransform.exe</_TransformExe>
+    <!-- Fallback to older T4 versions-->
+    <_TransformExe Condition="!Exists('$(_TransformExe)')">$(CommonProgramFiles)\Microsoft Shared\TextTemplating\12.0\TextTransform.exe</_TransformExe>
+    <_TransformExe Condition="!Exists('$(_TransformExe)')">$(CommonProgramFiles)\Microsoft Shared\TextTemplating\10.0\TextTransform.exe</_TransformExe>
+  </PropertyGroup>
+  <!-- <Target Name="TransformOnBuild"> -->
+  <Target Name="TransformOnBuild" AfterTargets="BeforeBuild">
+    <Error Text="Failed to find TextTransform.exe tool at '$(_TransformExe)'." Condition="!Exists('$(_TransformExe)')" />
+    <ItemGroup>
+      <_TextTransform Include="$(ProjectDir)Properties\AssemblyInfo.tt" />
+    </ItemGroup>
+    <!-- Perform task batching for each file -->
+    <Exec Command="&quot;$(_TransformExe)&quot; &quot;@(_TextTransform)&quot;" Condition="'%(Identity)' != ''" />
+  </Target>
+  <PropertyGroup>
+    <TransformOnBuild>true</TransformOnBuild>
+    <TransformOutOfDateOnly>false</TransformOutOfDateOnly>
+  </PropertyGroup>
+</Project>

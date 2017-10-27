@@ -1,0 +1,133 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agr.Int.OrderImport.Framework", "Agr.Int.OrderImport.Framework\Agr.Int.OrderImport.Framework.csproj", "{5066DB7C-B591-46B6-B4DC-CCD839308A8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agr.Int.OrderImport.Data.Models", "Agr.Int.OrderImport.Data.Models\Agr.Int.OrderImport.Data.Models.csproj", "{41F2B1EB-E90F-41E3-907B-7E06EEA3BDB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agr.Int.Orderimport.Data.Access", "Agr.Int.Orderimport.Data.Access\Agr.Int.Orderimport.Data.Access.csproj", "{A2547CDD-CA06-4D9B-859C-5800E53F2398}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agr.Int.OrderImport.Common", "Agr.Int.OrderImport.Common\Agr.Int.OrderImport.Common.csproj", "{66FCB509-CD5F-48E9-B64C-636A62CB6A99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AEI.Sftp", "AEI.Sftp\AEI.Sftp.csproj", "{A038D05D-FBCF-40BD-A4CE-7B619830896E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{E9B76633-86B7-4935-979A-E9BD9479DE6D}"
+	ProjectSection(SolutionItems) = preProject
+		Library\AssemblyVersioning.t4 = Library\AssemblyVersioning.t4
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agr.Int.OrderImport.Host", "Agr.Int.OrderImport.Host\Agr.Int.OrderImport.Host.csproj", "{44F39E3C-B3CD-409C-85AB-B9E40D5FEA2C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CRT", "CRT", "{90AB6F30-E7A1-4CB2-9B0E-3ABE2EE1FBEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRTBase", "CRTBase\CRTBase.csproj", "{D9DF2431-6D32-4AB1-A9F6-379C04B221A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdPartyLib", "ThirdPartyLib", "{B19DBDD0-FC04-4728-8131-C39CFA6BFFC1}"
+	ProjectSection(SolutionItems) = preProject
+		ThirdPartyLib\AddressValidation.dll = ThirdPartyLib\AddressValidation.dll
+		ThirdPartyLib\AFM.Commerce.Entities.dll = ThirdPartyLib\AFM.Commerce.Entities.dll
+		ThirdPartyLib\AFM.Commerce.ExternalServices.dll = ThirdPartyLib\AFM.Commerce.ExternalServices.dll
+		ThirdPartyLib\AFM.Commerce.Framework.Core.dll = ThirdPartyLib\AFM.Commerce.Framework.Core.dll
+		ThirdPartyLib\AFM.Commerce.Framework.Extensions.dll = ThirdPartyLib\AFM.Commerce.Framework.Extensions.dll
+		ThirdPartyLib\AFM.Commerce.Logging.dll = ThirdPartyLib\AFM.Commerce.Logging.dll
+		ThirdPartyLib\AFM.Commerce.Runtime.Services.dll = ThirdPartyLib\AFM.Commerce.Runtime.Services.dll
+		ThirdPartyLib\AFM.Commerce.Services.dll = ThirdPartyLib\AFM.Commerce.Services.dll
+		ThirdPartyLib\AFM.Ecommerce.Controls.dll = ThirdPartyLib\AFM.Ecommerce.Controls.dll
+		ThirdPartyLib\Agr.Int.OrderImport.Framework.dll = ThirdPartyLib\Agr.Int.OrderImport.Framework.dll
+		ThirdPartyLib\KountRisSdk.dll = ThirdPartyLib\KountRisSdk.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Cache.DictionaryCache.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Cache.DictionaryCache.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Cache.MemoryCache.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Client.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Client.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.ConfigurationProviders.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.ConfigurationProviders.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Data.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Data.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataAccess.Sqlite.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataAccess.Sqlite.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataAccess.SqlServer.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataManagers.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataManagers.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataServices.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataServices.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataServices.Messages.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.DataServices.SqlServer.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Entities.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Entities.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Framework.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Framework.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Messages.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Messages.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.Desktop.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.Desktop.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.Messages.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.Messages.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.PricingEngine.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Services.PricingEngine.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.TransactionService.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.TransactionService.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Workflow.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.Workflow.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.Activities.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.Activities.dll
+		ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.dll = ThirdPartyLib\Microsoft.Dynamics.Commerce.Runtime.WorkflowFoundation.dll
+		ThirdPartyLib\Microsoft.Dynamics.Retail.Diagnostics.dll = ThirdPartyLib\Microsoft.Dynamics.Retail.Diagnostics.dll
+		ThirdPartyLib\Microsoft.Dynamics.Retail.Ecommerce.Sdk.Controls.dll = ThirdPartyLib\Microsoft.Dynamics.Retail.Ecommerce.Sdk.Controls.dll
+		ThirdPartyLib\Microsoft.Dynamics.Retail.Ecommerce.Sdk.Core.dll = ThirdPartyLib\Microsoft.Dynamics.Retail.Ecommerce.Sdk.Core.dll
+		ThirdPartyLib\Microsoft.Dynamics.Retail.Ecommerce.Sdk.Services.dll = ThirdPartyLib\Microsoft.Dynamics.Retail.Ecommerce.Sdk.Services.dll
+		ThirdPartyLib\Microsoft.Dynamics.Retail.Notification.Contracts.dll = ThirdPartyLib\Microsoft.Dynamics.Retail.Notification.Contracts.dll
+		ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentManager.Reference.dll = ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentManager.Reference.dll
+		ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentProcessor.Common.dll = ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentProcessor.Common.dll
+		ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentSDK.dll = ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentSDK.dll
+		ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentSDK.Extensions.Desktop.dll = ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentSDK.Extensions.Desktop.dll
+		ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentSDK.Portable.dll = ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentSDK.Portable.dll
+		ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.dll = ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentTerminal.Contracts.dll
+		ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentTerminal.L5300.dll = ThirdPartyLib\Microsoft.Dynamics.Retail.PaymentTerminal.L5300.dll
+		ThirdPartyLib\Microsoft.Dynamics.Retail.SDKManager.dll = ThirdPartyLib\Microsoft.Dynamics.Retail.SDKManager.dll
+		ThirdPartyLib\Microsoft.Dynamics.Retail.SDKManager.Portable.dll = ThirdPartyLib\Microsoft.Dynamics.Retail.SDKManager.Portable.dll
+		ThirdPartyLib\Microsoft.Dynamics.Retail.Security.dll = ThirdPartyLib\Microsoft.Dynamics.Retail.Security.dll
+		ThirdPartyLib\Microsoft.Practices.Prism.dll = ThirdPartyLib\Microsoft.Practices.Prism.dll
+		ThirdPartyLib\Microsoft.Practices.Prism.Interactivity.dll = ThirdPartyLib\Microsoft.Practices.Prism.Interactivity.dll
+		ThirdPartyLib\Microsoft.Practices.ServiceLocation.dll = ThirdPartyLib\Microsoft.Practices.ServiceLocation.dll
+		ThirdPartyLib\NLog.dll = ThirdPartyLib\NLog.dll
+		ThirdPartyLib\System.ComponentModel.DataAnnotations.dll = ThirdPartyLib\System.ComponentModel.DataAnnotations.dll
+		ThirdPartyLib\System.Composition.AttributedModel.dll = ThirdPartyLib\System.Composition.AttributedModel.dll
+		ThirdPartyLib\System.Composition.Convention.dll = ThirdPartyLib\System.Composition.Convention.dll
+		ThirdPartyLib\System.Composition.Hosting.dll = ThirdPartyLib\System.Composition.Hosting.dll
+		ThirdPartyLib\System.Composition.Runtime.dll = ThirdPartyLib\System.Composition.Runtime.dll
+		ThirdPartyLib\System.Composition.TypedParts.dll = ThirdPartyLib\System.Composition.TypedParts.dll
+		ThirdPartyLib\System.Configuration.dll = ThirdPartyLib\System.Configuration.dll
+		ThirdPartyLib\System.Data.DataSetExtensions.dll = ThirdPartyLib\System.Data.DataSetExtensions.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5066DB7C-B591-46B6-B4DC-CCD839308A8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5066DB7C-B591-46B6-B4DC-CCD839308A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5066DB7C-B591-46B6-B4DC-CCD839308A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5066DB7C-B591-46B6-B4DC-CCD839308A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41F2B1EB-E90F-41E3-907B-7E06EEA3BDB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41F2B1EB-E90F-41E3-907B-7E06EEA3BDB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41F2B1EB-E90F-41E3-907B-7E06EEA3BDB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41F2B1EB-E90F-41E3-907B-7E06EEA3BDB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2547CDD-CA06-4D9B-859C-5800E53F2398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2547CDD-CA06-4D9B-859C-5800E53F2398}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2547CDD-CA06-4D9B-859C-5800E53F2398}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2547CDD-CA06-4D9B-859C-5800E53F2398}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66FCB509-CD5F-48E9-B64C-636A62CB6A99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66FCB509-CD5F-48E9-B64C-636A62CB6A99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66FCB509-CD5F-48E9-B64C-636A62CB6A99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66FCB509-CD5F-48E9-B64C-636A62CB6A99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A038D05D-FBCF-40BD-A4CE-7B619830896E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A038D05D-FBCF-40BD-A4CE-7B619830896E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A038D05D-FBCF-40BD-A4CE-7B619830896E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A038D05D-FBCF-40BD-A4CE-7B619830896E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44F39E3C-B3CD-409C-85AB-B9E40D5FEA2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44F39E3C-B3CD-409C-85AB-B9E40D5FEA2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44F39E3C-B3CD-409C-85AB-B9E40D5FEA2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44F39E3C-B3CD-409C-85AB-B9E40D5FEA2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9DF2431-6D32-4AB1-A9F6-379C04B221A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9DF2431-6D32-4AB1-A9F6-379C04B221A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9DF2431-6D32-4AB1-A9F6-379C04B221A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9DF2431-6D32-4AB1-A9F6-379C04B221A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D9DF2431-6D32-4AB1-A9F6-379C04B221A0} = {90AB6F30-E7A1-4CB2-9B0E-3ABE2EE1FBEA}
+	EndGlobalSection
+EndGlobal
